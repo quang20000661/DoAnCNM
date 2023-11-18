@@ -43,9 +43,19 @@ setInterval(() => {
 }, 1000);
 
 // khi chương trình được load chạy thì nó gọi đén hàm getWeatherData()
+// window.addEventListener("load", () => {
+//     getWeatherData();
+// });
 window.addEventListener("load", () => {
     getWeatherData();
+
+    // Thêm sự kiện cho sự kiện beforeunload
+    window.addEventListener("beforeunload", () => {
+        // Gọi lại hàm khi trang sắp tải lại hoặc đóng
+        getWeatherData();
+    });
 });
+
 
 // trạng thái của thanh tìm kiếm khi gõ các ký tự được khái báo là một hàm bất đồng bộ với cú pháp là async
 const searchStates = async searchText => {
